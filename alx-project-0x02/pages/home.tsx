@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import Card from '@/components/common/Card';
 import PostModal from '@/components/common/PostModal';
+import Header from "@/components/layout/Header"
 
 export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function HomePage() {
       <Head>
         <title>Home Page</title>
       </Head>
-
+      <Header />
       <main className="p-8 space-y-8 text-center">
         <h1 className="text-2xl font-bold">Welcome to the Home Page 🏠</h1>
 

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Button from '@/components/common/Button';
 import React from 'react';
+import Header from "@/components/layout/Header";
 
 export default function AboutPage() {
   return (
@@ -8,6 +9,7 @@ export default function AboutPage() {
       <Head>
         <title>About Page</title>
       </Head>
+     <Header /> 
       <main className="p-8 text-center">
         <h1 className="text-2xl font-bold">About Us 👨‍💻</h1>
         <p className="mt-4 text-gray-700">This project is part of the ALX Software Engineering program.</p>
