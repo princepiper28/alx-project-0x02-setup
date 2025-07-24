@@ -8,6 +8,7 @@ interface UsersPageProps {
   users: UserProps[];
 }
 
+
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const users: UserProps[] = await res.json();
@@ -19,6 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 120,
   };
 };
+
 
 export default function UsersPage({ users }: UsersPageProps) {
   return (
