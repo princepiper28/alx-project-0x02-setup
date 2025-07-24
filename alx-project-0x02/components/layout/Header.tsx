@@ -18,6 +18,7 @@ const Header = () => {
         <Link href="/posts">
           <span className="hover:underline cursor-pointer">/posts</span>
         </Link>
+        
       </nav>
     </header>
   );
