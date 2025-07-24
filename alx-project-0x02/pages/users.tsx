@@ -41,6 +41,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       users,
     },
-    revalidate: 120, // Optional: Regenerate page every 2 minutes
+    revalidate: 120, // optional ISR
   };
 };
