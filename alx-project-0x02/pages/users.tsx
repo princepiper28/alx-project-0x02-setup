@@ -4,6 +4,19 @@ import UserCard from "@/components/common/UserCard";
 import { UserProps } from "@/interfaces";
 import Header from "@/components/layout/Header";
 
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users: UserProps[] = await res.json();
+
+  return {
+    props: {
+      users,
+    },
+    revalidate: 120, // optional ISR
+  };
+};
+
+
 interface UsersPageProps {
   users: UserProps[];
 }
@@ -33,14 +46,3 @@ export default function UsersPage({ users }: UsersPageProps) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users: UserProps[] = await res.json();
-
-  return {
-    props: {
-      users,
-    },
-    revalidate: 120, // optional ISR
-  };
-};
