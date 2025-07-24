@@ -1,25 +1,13 @@
-import { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
 import { PostProps } from "@/interfaces";
 import PostCard from "@/components/common/PostCard";
 import Header from "@/components/layout/Header";
 
-export default function PostsPage() {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+interface PostsPageProps {
+  posts: PostProps[];
+}
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
-        const data = await res.json();
-        setPosts(data);
-      } catch (error) {
-        console.error("Failed to fetch posts", error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
+export default function PostsPage({ posts }: PostsPageProps) {
   return (
     <>
       <Header />
@@ -40,3 +28,15 @@ export default function PostsPage() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
+  const posts: PostProps[] = await res.json();
+
+  return {
+    props: {
+      posts,
+    },
+    revalidate: 60, // Optional: regenerate every 60 seconds
+  };
+};
